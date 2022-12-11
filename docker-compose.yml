@@ -1,0 +1,41 @@
+version: '3.2'
+
+services:
+  main:
+    container_name: main_crud_flask
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+    networks:
+      - flask_crud_app
+
+  adminer:
+    container_name: adminer_crud_flask
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - flask_crud_app
+    depends_on:
+      - db
+
+  db:
+    container_name: db_crud_flask
+    image: postgres:10-alpine
+    env_file: .env
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.docker/data:/var/lib/postgresql/data
+    networks:
+      - flask_crud_app
+
+networks:
+  flask_crud_app:
+    driver: bridge

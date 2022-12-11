@@ -1,0 +1,37 @@
+{% extends "__base.html" %}
+{% block content %}
+  <div class="container">
+
+    <h2 class="mt-5">Users</h2>
+
+    {% include '__messages.html' %}
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <th scope="row"><a href="/user/{{user.id}}/edit">{{user.id}}</a></th>
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td class="d-flex">
+              <a href="/user/{{user.id}}/edit" class="btn btn-outline-primary btn-sm me-2">Edit</a>
+              <form method="POST" action="/user/{{user.id}}/delete" class="">
+                <button class="btn btn-outline-danger btn-sm">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <form method="POST" action="/user/{% if user.id %}{{user.id}}/edit{% else %}new{% endif %}" class="mt-5 col-md-6">
+      {% include '__messages.html' %}
+      {{ form.csrf_token }}
+
+      <h3>{{'Editing user "' ~ user.name ~ '"' if user.id else 'New user'}}</h3>
+
+      <div class="">
+        {{ form.name.label(class="form-label text-capitalize") }}
+        {% if user.name %}
+          {{ form.name(class="form-control", value=user.name) }}
+        {% else %}
+          {{ form.name(class="form-control") }}
+        {% endif %}
+      </div>
+
+      <div class="mt-2">
+        {{ form.username.label(required=true, class="form-label text-capitalize") }}
+        {{ form.username(required=true, class="form-control", value=user.username if user.username else '', size=20) }}
+      </div>
+
+      <div class="mt-2">
+        {{ form.email.label(class="form-label text-capitalize") }}
+        {% if user.email %}
+          {{ form.email(class="form-control", value=user.email) }}
+        {% else %}
+          {{ form.email(class="form-control") }}
+        {% endif %}
+      </div>
+
+      {% if not user.id %}
+        <div class="mt-2">
+          {{ form.password.label(class="form-label text-capitalize") }}
+          {{ form.password(class="form-control") }}
+        </div>
+      {% endif %}
+
+      <div class="d-flex mt-4 justify-content-between">
+        <a href="/user" class="btn btn-secondary col-5">Cancel</a>
+        <button type="submit" value="submit" class="btn btn-primary col-5">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
