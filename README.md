@@ -51,8 +51,8 @@
 ## Commands
 > *In the root directory of the App:*
 
-- `docker compose up -d`, to start the app in background;
-- `docker compose down`, to stop the app;
+- `docker-compose up -d`, to start the app in background;
+- `docker-compose down`, to stop the app;
 - `docker attach [APP_NAME|ID]`, to start monitoring a container;
 - `docker exec -it [CONTAINER]`, to run a command in a container.
 
