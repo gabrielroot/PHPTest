@@ -58,11 +58,11 @@
 
 #### Migrations
 > *Run the following lines when needs to manage migrations:*
-- `docker exec -it main_flask flask db init`, to create a folder with set to migration;
+- `docker exec -it main_crud_flask flask db init`, to create a folder with set to migration;
 
-- `docker exec -it main_flask flask db migrate -m "Initial migration."`, to generate a migration;
+- `docker exec -it main_crud_flask flask db migrate -m "Initial migration."`, to generate a migration;
 
-- `docker exec -it main_flask flask db [upgrade|downgrade]`, to up/down changes based on migration files.
+- `docker exec -it main_crud_flask flask db [upgrade|downgrade]`, to up/down changes based on migration files.
 
 <br>
 
